@@ -2,7 +2,7 @@ import pymysql
 import datetime
 from pathlib import Path
 
-from my_settings import SECRET_KEY, DATABASES
+from my_settings import SECRET_KEY, DATABASES, ALGORITHM
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,9 +10,8 @@ pymysql.install_as_MySQLdb()
 
 # 환경변수
 SECRET_KEY = SECRET_KEY
-
 DATABASES = DATABASES
-#
+ALGORITHM = ALGORITHM
 
 DEBUG = True
 
