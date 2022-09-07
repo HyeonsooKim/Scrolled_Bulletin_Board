@@ -2,7 +2,7 @@ import pymysql
 import datetime
 from pathlib import Path
 
-from my_settings import SECRET_KEY, DATABASES, ALGORITHM
+from my_settings import SECRET_KEY, DATABASES, ALGORITHM, WEATHERAPI_KEY
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -12,6 +12,7 @@ pymysql.install_as_MySQLdb()
 SECRET_KEY = SECRET_KEY
 DATABASES = DATABASES
 ALGORITHM = ALGORITHM
+WEATHERAPI_KEY = WEATHERAPI_KEY
 
 DEBUG = True
 
@@ -53,6 +54,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
+    'apps.boards.apps.BoardsConfig'
 ]
 
 MIDDLEWARE = [
@@ -115,11 +119,22 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
     "DEFAULT_PERMISSION_CLASSES": (
         # "rest_framework.permissions.IsAuthenticated",
         "rest_framework.permissions.AllowAny",
     ),
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Bulletin Board Service',
+    'DESCRIPTION': 'Provide Bulletin Board Service with password authentification and weather api',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
 }
 
 LANGUAGE_CODE = 'en-us'
