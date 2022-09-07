@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
     'apps.boards.apps.BoardsConfig'
 ]
 
@@ -121,6 +123,15 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.AllowAny",
     ),
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Bulletin Board Service',
+    'DESCRIPTION': 'Provide Bulletin Board Service with password authentification and weather api',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
 }
 
 LANGUAGE_CODE = 'en-us'
