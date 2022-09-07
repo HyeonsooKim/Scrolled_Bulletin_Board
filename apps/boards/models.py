@@ -8,3 +8,4 @@ class BulletinBoard(models.Model):
     password = models.CharField(max_length=128)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    weather = models.CharField(max_length=20, null=True, blank=True)

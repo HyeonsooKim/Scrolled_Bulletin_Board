@@ -17,6 +17,6 @@ board_detail = views.BoardViewSet.as_view({
 })
 
 urlpatterns =[
-    path('board/', board_list),
-    path('board/<int:pk>/', board_detail),
+    path('', board_list),
+    path('<int:pk>', board_detail),
 ]

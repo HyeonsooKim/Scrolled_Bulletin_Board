@@ -2,7 +2,7 @@ import pymysql
 import datetime
 from pathlib import Path
 
-from my_settings import SECRET_KEY, DATABASES, ALGORITHM
+from my_settings import SECRET_KEY, DATABASES, ALGORITHM, WEATHERAPI_KEY
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -12,6 +12,7 @@ pymysql.install_as_MySQLdb()
 SECRET_KEY = SECRET_KEY
 DATABASES = DATABASES
 ALGORITHM = ALGORITHM
+WEATHERAPI_KEY = WEATHERAPI_KEY
 
 DEBUG = True
 

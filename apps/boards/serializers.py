@@ -8,6 +8,8 @@ from .models import BulletinBoard
 
 class BulletinBoardSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, max_length=128, style={'input_type': 'password'})
+    weather = serializers.CharField(read_only=True, max_length=20, required=False, allow_null=True)
+    
     class Meta:
         model = BulletinBoard
         fields = '__all__'
