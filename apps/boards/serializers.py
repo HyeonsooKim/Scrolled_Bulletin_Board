@@ -9,7 +9,7 @@ from .models import BulletinBoard
 class BulletinBoardSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, max_length=128, style={'input_type': 'password'})
     weather = serializers.CharField(read_only=True, max_length=20, required=False, allow_null=True)
-    
+
     class Meta:
         model = BulletinBoard
         fields = '__all__'
@@ -32,7 +32,6 @@ class BulletinBoardSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         """ 게시물 확인 후 업데이트"""
-
         input_password = validated_data['password'].encode('utf-8')
         password = instance.password.encode('utf-8')
 
